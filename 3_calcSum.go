@@ -2,18 +2,6 @@ package main
 
 import "fmt"
 
-type Number struct{}
-
-func (s Number) calcSum(a, b, c int) {
-	newA := a
-	newB := b
-	c = a + b
-
-	fmt.Println("Копия A:", newA)
-	fmt.Println("Копия B:", newB)
-	fmt.Println("Измененная C:", c)
-}
-
 func main() {
 	var a, b, c int
 	fmt.Println("Введите значения a, b и c:")
@@ -24,6 +12,14 @@ func main() {
 	fmt.Print("c = ")
 	fmt.Scanln(&c)
 
-	result := Number{}
-	result.calcSum(a, b, c)
+	calcSum(&a, &b, &c)
+}
+
+func calcSum(a *int, b *int, c *int) {
+	NewA := *a
+	NewB := *b
+	*c = *a + *b
+
+	fmt.Println("Копия A: =", NewA)
+	fmt.Println("Копия B: =", NewB)
 }
